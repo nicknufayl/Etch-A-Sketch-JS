@@ -3,6 +3,7 @@ document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
 let color = 'black';
+let click = true;
 
 const populateBoard = (size) => {
     let board = document.querySelector('.board');
@@ -32,11 +33,12 @@ const changeSize = (input) => {
 }
 
 function colorSquare(e) { 
-    if (e.type === 'mouseover' && !mouseDown) return;
-    else if (color === "random") {
-        e.target.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    } else {
-        e.target.style.backgroundColor = color;
+    if (click) {
+        if (color === "random") {
+            e.target.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        } else {
+            e.target.style.backgroundColor = color;
+        }
     }
 }
 
@@ -50,3 +52,13 @@ function resetBoard() {
     squares.forEach((div) => div.style.backgroundColor = 'white');
 }
 
+document.querySelector('body').addEventListener('click', (e) => {
+     if (e.target.tagName != 'BUTTON') {
+         click = !click;
+         if (click) {
+             document.querySelector('.mode').textContent = "Mode: Coloring";
+         } else {
+             document.querySelector('.mode').textContent = "Mode: Not Coloring";
+         }
+     }
+});
