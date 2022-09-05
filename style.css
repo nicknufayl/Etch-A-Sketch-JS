@@ -83,3 +83,12 @@ button:hover {
 .randomButton:hover {
     background: linear-gradient(0.25turn, #20ff02, #ebf8e1, #aecc03);
 }
+
+.mode {
+    margin-bottom: 10px;
+}
+
+input {
+    width: 50px;
+}
+

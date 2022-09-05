@@ -1,6 +1,6 @@
-let mouseDown = false
-document.body.onmousedown = () => (mouseDown = true);
-document.body.onmouseup = () => (mouseDown = false);
+// let mouseDown = false
+// document.body.onmousedown = () => (mouseDown = true);
+// document.body.onmouseup = () => (mouseDown = false);
 
 let color = 'black';
 let click = true;
@@ -26,9 +26,10 @@ populateBoard(16);
 
 const changeSize = (input) => {
     if (input >= 2 && input <= 100) {
+        document.querySelector('.error').style.display = 'none';
         populateBoard(input);
     } else {
-        window.alert('Enter valid number!');
+        document.querySelector('.error').style.display = 'flex';
     }
 }
 
